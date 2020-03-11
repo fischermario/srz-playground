@@ -35,8 +35,6 @@ def main():
 		print("This is not the transceiver!\n")
 		sys.exit(1)
 
-	sendlength = 1
-
 	while True:
 		line = arduino.readline().decode('utf-8')
 		if len(line) > 0:
@@ -44,7 +42,7 @@ def main():
 			searchObj = re.search( r'^\[(\d+)\]', line.strip(), re.M|re.I)
 			if searchObj:
 				target = searchObj.group(1)
-				arduino.write(target + "\n")
+				arduino.write((target + "\n").encode('utf-8'))
 				line = arduino.readline().decode('utf-8')
 				if line.strip() == "OK":
 					payload = "Jo-Jo-Jo"
