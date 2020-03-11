@@ -29,7 +29,7 @@ def main():
 	line = arduino.readline().decode('utf-8')
 
 	# Real
-	line = arduino.readline()
+	line = arduino.readline().decode('utf-8')
 
 	if line.strip() != "START_TRANSCEIVE":
 		print("This is not the transceiver!\n")
